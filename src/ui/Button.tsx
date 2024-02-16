@@ -1,6 +1,9 @@
 import styled, { css } from "styled-components";
+import FlattenSimpleInterpolation from "styled-components";
 
-const sizes = {
+type Style = Record<string, FlattenSimpleInterpolation>;
+
+const sizes: Style = {
   small: css`
     font-size: 1.2rem;
     padding: 0.4rem 0.8rem;
@@ -20,7 +23,7 @@ const sizes = {
   `,
 };
 
-const variations = {
+const variations: Style = {
   primary: css`
     color: var(--color-brand-50);
     background-color: var(--color-brand-600);
@@ -47,20 +50,20 @@ const variations = {
     }
   `,
 };
-
-const Button = styled.button`
-  font-size: 1.4rem;
-  padding: 1.2rem 1.6rem;
-  font-weight: 500;
+interface ButtonProps {
+  size?: keyof Style;
+  variation?: string;
+}
+const Button = styled.button<ButtonProps>`
   border: none;
   border-radius: var(--border-radius-sm);
-  background-color: var(--color-brand-600);
-  color: var(--color-brand-50);
   box-shadow: var(--shadow-sm);
-  cursor: pointer;
-  &:hover {
-    background-color: var(--color-brand-700);
-  }
+  ${(props) => sizes[props.size]}
+  ${(props) => variations[props.variations]}
 `;
 
+Button.defaultProps = {
+  variation: "primary",
+  size: "medium",
+};
 export default Button;
