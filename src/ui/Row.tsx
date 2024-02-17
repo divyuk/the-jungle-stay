@@ -8,7 +8,7 @@ const Row = styled.section<RowProps>`
   ${(props) =>
     props.type === "horizontal" &&
     css`
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
     `}
   ${(props) =>
