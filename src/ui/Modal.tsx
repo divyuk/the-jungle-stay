@@ -1,4 +1,11 @@
-import { cloneElement, createContext, useContext, useState } from "react";
+import {
+  cloneElement,
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
@@ -73,11 +80,27 @@ function Open({ children, opens: openWindowName }) {
 
 function Window({ children, name }) {
   const { openName, close } = useContext(ModelContext);
-  if (name !== openName) return null;
+  const ref = useRef();
 
+  useEffect(
+    function () {
+      function handleClick(e) {
+        if (ref.current && !ref.current.contains(e.target)) {
+          console.log("Click Outside");
+          close();
+        }
+      }
+      document.addEventListener("click", handleClick, true); // true so that the event
+      // gets captured during capturing phase and not in bubbling phase
+      return () => document.removeEventListener("click", handleClick, true);
+    },
+    [close]
+  );
+
+  if (name !== openName) return null;
   return createPortal(
     <Overlay>
-      <StyledModal>
+      <StyledModal ref={ref}>
         <Button onClick={close}>
           <HiXMark />
         </Button>
