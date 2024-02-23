@@ -5,7 +5,6 @@ import { formatCurrency } from "../../utils/helpers";
 import { HiPencil, HiSquare2Stack, HiTrash } from "react-icons/hi2";
 import { useCreateCabin } from "./useCreateCabin";
 import Modal from "../../ui/Modal";
-import { MdModelTraining } from "react-icons/md";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 
 const TableRow = styled.div`
