@@ -18,4 +18,5 @@ An internal app for the hotel employee to manage the Cabin bookings.
 
 New user can only be created by the The Jungle Stay Employee, therefore use these credentials to login.
 Email : admin@example.com
+
 Password : admin@123
