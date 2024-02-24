@@ -13,3 +13,9 @@ An internal app for the hotel employee to manage the Cabin bookings.
 7. Icons - React Icons
 8. Toast - React hot toast
 9. Charts - Recharts
+
+## Credentials
+
+New user can only be created by the The Jungle Stay Employee, therefore use these credentials to login.
+Email : admin@example.com
+Password : admin@123
