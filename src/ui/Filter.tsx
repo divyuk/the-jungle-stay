@@ -37,7 +37,7 @@ const FilterButton = styled.button`
 // We are storing the filter state in the URL itself
 function Filter({ filterField, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentFilter = searchParams.get(filterField) || options.at[0].value;
+  const currentFilter = searchParams.get(filterField) || options.at(0).value;
   function handleClick(value) {
     searchParams.set(filterField, value);
     setSearchParams(searchParams);
